@@ -23,6 +23,11 @@ You need to know:
 - SQLite database and the SQLite query language
 
 
+https://developer.android.com/codelabs/basic-android-kotlin-compose-persisting-data-room?hl=pt-br#1
+Parei nesse codelab :
+https://developer.android.com/codelabs/basic-android-kotlin-compose-update-data-room?hl=pt_br#4
+5. Testar seu banco de dados
+
 Getting Started
 ---------------
 
