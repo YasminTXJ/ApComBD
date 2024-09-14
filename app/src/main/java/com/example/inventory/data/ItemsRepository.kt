@@ -18,7 +18,8 @@ import com.example.inventory.data.Item
 import kotlinx.coroutines.flow.Flow
 
 /**
- * Repository that provides insert, update, delete, and retrieve of [Item] from a given data source.
+ * Repositório que fornece inserção, atualização, exclusão e recuperação de [Item] de
+ * uma determinada fonte de dados.
  */
 interface ItemsRepository {
     /**

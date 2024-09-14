@@ -36,6 +36,11 @@ import java.util.Locale
 import androidx.compose.runtime.rememberCoroutineScope
 import kotlinx.coroutines.launch
 
+/**
+ *  Essa tela é mostrada quando o FAB é tocado na tela inicial. O
+ *  ItemEntryViewModel.kt é o modelo de visualização correspondente ao
+ *  ViewModel dessa tela.
+ */
 object ItemEntryDestination : NavigationDestination {
     override val route = "item_entry"
     override val titleRes = R.string.item_entry_title

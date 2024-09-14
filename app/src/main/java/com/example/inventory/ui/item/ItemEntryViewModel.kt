@@ -27,30 +27,35 @@ import java.text.NumberFormat
 
 
 /**
- * ViewModel to validate and insert items in the Room database.
+ * VALIDA E INSERE DADOS
+ * VIEW MODEL - gerenciao estado da UI relacionado à entrada de itens e por interage com o
+ * repositório de itens (ItemsRepository) para salvar ou atualizar dados no banco de dados Room.
  */
 class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewModel() {
 
     /**
-     * Holds current item ui state
+     *itemUiState:Representa o estado atual da interface do usuário
      */
     var itemUiState by mutableStateOf(ItemUiState())
         private set
 
     /**
-     * Updates the [itemUiState] with the value provided in the argument. This method also triggers
-     * a validation for input values.
+     *  Atualiza o estado da UI (itemUiState) com os novos valores fornecidos. Sempre que um valor muda,
+     *  o método também valida a entrada (se o nome, preço e quantidade são válidos).
      */
     fun updateUiState(itemDetails: ItemDetails) {
         itemUiState =
             ItemUiState(itemDetails = itemDetails, isEntryValid = validateInput(itemDetails))
     }
 
+    /**validateInput: Valida os campos da interface do item
+     */
     private fun validateInput(uiState: ItemDetails = itemUiState.itemDetails): Boolean {
         return with(uiState) {
             name.isNotBlank() && price.isNotBlank() && quantity.isNotBlank()
         }
     }
+    //salva o item no Banco de dados. A função de inserção é chamada no repositório (itemsRepository.insertItem).
     suspend fun saveItem() {
         if (validateInput()) {
             itemsRepository.insertItem(itemUiState.itemDetails.toItem())
@@ -74,7 +79,7 @@ data class ItemDetails(
 )
 
 /**
- * converte o objeto de estado da interface ItemUiState para o tipo de entidade Item.
+ * Converte o objeto ItemDetails (utilizado na interface) para a entidade Item usada no banco de dados Room.
  *  If the value of [ItemDetails.price] is
  * not a valid [Double], then the price will be set to 0.0. Similarly if the value of
  * [ItemDetails.quantity] is not a valid [Int], then the quantity will be set to 0
@@ -100,7 +105,7 @@ fun Item.toItemUiState(isEntryValid: Boolean = false): ItemUiState = ItemUiState
 )
 
 /**
- * Econverte o objeto de entidade Item do Room para o ItemDetails.
+ * converte o objeto de entidade Item do Room para o ItemDetails.
  */
 fun Item.toItemDetails(): ItemDetails = ItemDetails(
     id = id,

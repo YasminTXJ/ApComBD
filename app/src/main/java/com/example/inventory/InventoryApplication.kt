@@ -24,6 +24,7 @@ class InventoryApplication : Application() {
 
     /**
      * AppContainer instance used by the rest of classes to obtain dependencies
+     * O objetivo principal dessa classe é configurar um contêiner de dependências que pode ser acessado de qualquer lugar no aplicativo.
      */
     lateinit var container: AppContainer
 

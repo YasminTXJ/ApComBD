@@ -1,5 +1,4 @@
 
-
 package com.example.inventory.ui.home
 
 import androidx.compose.foundation.clickable
@@ -50,7 +49,8 @@ object HomeDestination : NavigationDestination {
 }
 
 /**
- * Entry route for Home screen
+ * primeira tela no app, que contém os elementos combináveis para mostrar
+ * a lista de inventário.
  */
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -95,7 +95,7 @@ fun HomeScreen(
 @Composable
 private fun HomeBody(
     itemList: List<Item>,
-    onItemClick: (Int) -> Unit,
+    onItemClick: (Int) -> Unit, //função chamada ao clicar em um item, que navega para a tela de edição do item
     modifier: Modifier = Modifier,
     contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
@@ -140,7 +140,7 @@ private fun InventoryList(
         }
     }
 }
-
+//Exibe os detalhes de um item individual dentro de um Card (cartão).
 @Composable
 private fun InventoryItem(
     item: Item, modifier: Modifier = Modifier

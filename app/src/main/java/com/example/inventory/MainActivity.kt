@@ -42,3 +42,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+/**
+ * Esse método é chamado quando a atividade é criada. Aqui, ele configura o layout da atividade e define o conteúdo.
+ * enableEdgeToEdge(): Habilita o modo edge-to-edge, que permite que o conteúdo da atividade se estenda até as bordas da tela.
+ * setContent: Define o conteúdo da atividade usando um bloco de código Jetpack Compose.
+ * InventoryTheme: Aplica o tema definido no seu aplicativo. Dentro desse bloco, você define a aparência geral da interface do usuário.
+ * Surface: Um contêiner para a superfície do layout que usa a cor de fundo do tema.
+ * InventoryApp(): Chama um composable que provavelmente define a interface principal do aplicativo.
+ */

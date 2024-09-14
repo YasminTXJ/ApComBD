@@ -13,7 +13,9 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 /**
- * ViewModel to retrieve all items in the Room database.
+ * ViewModel que gerencia o estado da UI da tela inicial (HomeScreen)
+ * Ela interage com o repositório de itens (ItemsRepository) para buscar os dados
+ * e preparar o estado da interface do usuário.
  */
 class HomeViewModel(itemsRepository: ItemsRepository): ViewModel() {
     companion object {

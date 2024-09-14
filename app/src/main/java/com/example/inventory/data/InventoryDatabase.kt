@@ -5,6 +5,9 @@ import androidx.room.RoomDatabase
 import android.content.Context
 import androidx.room.Room
 
+/**
+ *Instancia um banco de dados
+ */
 @Database(entities = [Item::class], version = 1, exportSchema = false)
 abstract class InventoryDatabase : RoomDatabase() {
     abstract fun itemDao(): ItemDao
@@ -14,6 +17,7 @@ abstract class InventoryDatabase : RoomDatabase() {
         @Volatile
         private var Instance: InventoryDatabase? = null
 
+//builder de banco de dados para acessar o banco de dados.
 
         fun getDatabase(context: Context): InventoryDatabase {
             // if the Instance is not null, return it, otherwise create a new database instance.

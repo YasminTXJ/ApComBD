@@ -20,6 +20,8 @@ import ItemsRepository
 import android.content.Context
 
 /**
+ *  instancia o banco de dados e transmite a instância do DAO para a classe
+ * OfflineItemsRepository
  * App container for Dependency injection.
  */
 interface AppContainer {
@@ -37,3 +39,7 @@ class AppDataContainer(private val context: Context) : AppContainer {
         OfflineItemsRepository(InventoryDatabase.getDatabase(context).itemDao())
     }
 }
+/**
+ * Defina a instância do banco de dados chamando getDatabase() na 
+ * classe InventoryDatabase transmitindo o contexto e chame .itemDao() para criar a instância do Dao.
+ */

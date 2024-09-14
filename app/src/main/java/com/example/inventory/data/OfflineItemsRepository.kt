@@ -1,24 +1,16 @@
-/*
- * Copyright (C) 2023 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     https://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 
 package com.example.inventory.data
 
 import ItemsRepository
 import kotlinx.coroutines.flow.Flow
 
+/**
+ * A interface ItemsRepository define um conjunto de métodos para realizar operações CRUD (Create, Read, Update, Delete).
+ * A classe OfflineItemsRepository implementa essa interface e delega essas operações
+ * para o DAO (ItemDao), que interage diretamente com a fonte de dados, provavelmente
+ * um banco de dados local.
+ */
 class OfflineItemsRepository(private val itemDao: ItemDao) : ItemsRepository {
     override fun getAllItemsStream(): Flow<List<Item>> = itemDao.getAllItems()
 
@@ -30,3 +22,13 @@ class OfflineItemsRepository(private val itemDao: ItemDao) : ItemsRepository {
 
     override suspend fun updateItem(item: Item) = itemDao.update(item)
 }
+/**
+ * O uso de Flow permite que o aplicativo receba atualizações em tempo real sempre
+ * que os dados no banco de dados forem alterados.
+ *
+ *
+ *
+ *
+ *  aplicativo que trabalha offline, ou seja, sem a necessidade de uma conexão com a internet, e os dados são armazenados
+ *  localmente no dispositivo usando Room ou algum outro mecanismo de persistência local.
+ */
